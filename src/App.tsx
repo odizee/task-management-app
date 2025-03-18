@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
-import { store, persistor } from './store/store';
-import { TaskForm } from './components/TaskForm';
-import { TaskList } from './components/TaskList';
-import { TaskFilter } from './components/TaskFilter';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from './store/store';
-import { toggleDarkMode } from './store/taskSlice';
-import { Moon, Sun, CheckSquare, Plus } from 'lucide-react';
+import React, { useState } from "react";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+import { store, persistor } from "./store/store";
+import { TaskForm } from "./components/TaskForm";
+import { TaskList } from "./components/TaskList";
+import { TaskFilter } from "./components/TaskFilter";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "./store/store";
+import { toggleDarkMode } from "./store/taskSlice";
+import { Moon, Sun, CheckSquare, Plus } from "lucide-react";
 
-const Modal: React.FC<{ isOpen: boolean; onClose: () => void; children: React.ReactNode }> = ({
-  isOpen,
-  onClose,
-  children,
-}) => {
+const Modal: React.FC<{
+  isOpen: boolean;
+  onClose: () => void;
+  children: React.ReactNode;
+}> = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
 
   return (
@@ -26,8 +26,18 @@ const Modal: React.FC<{ isOpen: boolean; onClose: () => void; children: React.Re
             onClick={onClose}
             className="absolute top-0 right-0 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
           </button>
         </div>
@@ -41,8 +51,10 @@ const Dashboard: React.FC = () => {
   const darkMode = useSelector((state: RootState) => state.darkMode);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  console.log(darkMode);
+
   return (
-    <div className={darkMode ? 'dark' : ''}>
+    <div className={darkMode ? "dark" : ""}>
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
         <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center mb-6">
