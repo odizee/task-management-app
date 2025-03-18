@@ -51,8 +51,6 @@ const Dashboard: React.FC = () => {
   const darkMode = useSelector((state: RootState) => state.darkMode);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  console.log(darkMode);
-
   return (
     <div className={darkMode ? "dark" : ""}>
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
